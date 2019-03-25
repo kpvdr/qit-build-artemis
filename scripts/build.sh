@@ -1,18 +1,8 @@
 #! /bin/bash
 
-# --- debug maven installation ---
-echo "ls -la /usr/local/"
-ls -la /usr/local/
-echo
-echo "ls -la /etc/profile.d/"
-ls -la /etc/profile.d/
-echo
-echo "cat /etc/profile.d/maven.sh"
-cat /etc/profile.d/maven.sh
-echo
-# --- end debug ---
-
+# Make sure the directly installed maven 3.6.0 is in the path
 . /etc/profile.d/maven.sh
+mvn -version
 
 . ./scripts/common.sh
 
