@@ -7,9 +7,14 @@ RUN yum -q -y install epel-release && \
     yum -q clean all
 
 RUN wget https://www-us.apache.org/dist/maven/maven-3/3.6.0/binaries/apache-maven-3.6.0-bin.tar.gz -P /tmp && \
-    tar xf /tmp/apache-maven-3.6.0-bin.tar.gz -C /opt && \
-    ln -s /opt/apache-maven-3.6.0 /usr/local/maven && \
-    echo 'export JAVA_HOME=/usr/lib/jvm/jre-openjdk\nexport M2_HOME=/usr/local/maven\nexport MAVEN_HOME=/usr/local/maven\nexport PATH=${M2_HOME}/bin:${PATH}' >> /etc/profile.d/maven.sh && \
+    tar xf /tmp/apache-maven-3.6.0-bin.tar.gz -C /usr/local && \
+    ln -s /usr/local/apache-maven-3.6.0 /usr/local/maven && \
+    echo <<< EOL \
+export JAVA_HOME=/usr/lib/jvm/jre-openjdk \
+export M2_HOME=/usr/local/maven \
+export MAVEN_HOME=/usr/local/maven \
+export PATH=${M2_HOME}/bin:${PATH} \
+EOL >> /etc/profile.d/maven.sh && \
     chmod +x /etc/profile.d/maven.sh
 
 ARG USER_ID=1000

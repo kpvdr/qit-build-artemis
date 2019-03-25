@@ -1,9 +1,16 @@
 #! /bin/bash
 
-# debug maven installation
+# --- debug maven installation ---
+echo "ls -la /usr/local/"
 ls -la /usr/local/
+echo
+echo "ls -la /etc/profile.d/"
 ls -la /etc/profile.d/
+echo
+echo "cat /etc/profile.d/maven.sh"
 cat /etc/profile.d/maven.sh
+echo
+# --- end debug ---
 
 . /etc/profile.d/maven.sh
 
