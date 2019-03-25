@@ -1,5 +1,12 @@
 #! /bin/bash
 
+# debug maven installation
+ls -la /usr/local/
+ls -la /etc/profile.d/
+cat /etc/profile.d/maven.sh
+
+. /etc/profile.d/maven.sh
+
 . ./scripts/common.sh
 
 cd ${GIT_DIR}
