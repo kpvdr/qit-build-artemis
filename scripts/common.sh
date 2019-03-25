@@ -1,5 +1,7 @@
 #! /bin/bash
 
+source /etc/profile.d/maven.sh
+
 if [[ -z ${JENKINS_HOME+x} ]]; then
     JENKINS_HOME="/var/lib/jenkins"
 fi

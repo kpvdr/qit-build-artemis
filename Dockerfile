@@ -3,8 +3,14 @@ FROM centos:7
 RUN yum -q -y update && yum -q clean all
 
 RUN yum -q -y install epel-release && \
-    yum -y install git sudo maven java-1.8.0-openjdk-devel && \
+    yum -y install wget git sudo java-1.8.0-openjdk-devel && \
     yum -q clean all
+
+RUN wget https://www-us.apache.org/dist/maven/maven-3/3.6.0/binaries/apache-maven-3.6.0-bin.tar.gz -P /tmp && \
+    tar xf /tmp/apache-maven-3.6.0.tar.gz -C /opt && \
+    ln -s /opt/apache-maven-3.6.0 /opt/maven && \
+    echo export JAVA_HOME=/usr/lib/jvm/jre-openjdk\nexport M2_HOME=/opt/maven\nexport MAVEN_HOME=/opt/maven\nexport PATH=${M2_HOME}/bin:${PATH} >> /etc/profile.d/maven.sh && \
+    chmod +x /etc/profile.d/maven.sh
 
 ARG USER_ID=1000
 ARG GROUP_ID=1000
