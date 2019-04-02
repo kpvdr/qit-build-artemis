@@ -6,6 +6,10 @@ pipeline {
         }
     }
 
+    triggers {
+        upstream(upstreamProjects: 'build-interop', threshold: hudson.model.Result.SUCCESS)
+    }
+
     stages {
         stage('Clean') {
             steps {
